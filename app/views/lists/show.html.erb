@@ -1,2 +1,11 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h1>Hello <%= @user.first_name %>, </h1>
+
+<h4>List: <%= @list.title %></h4>
+
+<br />
+<%# <%= link_to 'Add Item', new_list_item_path(@list) %>
+<br />
+
+<%= link_to 'Edit List Title' edit_user_lists_path([@users, @list])%>
+<%= link_to 'Delete List', [@user, @list], method: :delete %>
+<%= link_to 'Back to Lists', user_lists_path(@user) %>

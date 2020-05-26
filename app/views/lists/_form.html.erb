@@ -1,0 +1,9 @@
+<h1> <%= @list.id ? 'Edit List' : 'Create List' %> </h1>
+<hr />
+<%= form_with(model: [@user, @list], local: true) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br />
+  <br />
+  <%= f.submit%>
+<% end %>
