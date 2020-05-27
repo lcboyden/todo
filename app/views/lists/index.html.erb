@@ -1,4 +1,6 @@
 <h1>Click a List To View It</h1>
+<%= link_to "Back", users_path %>
+
 <%= link_to 'Add List', new_user_list_path(@user) %>
 <ul>
   <% @lists.each do |list| %>

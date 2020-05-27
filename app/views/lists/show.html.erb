@@ -6,6 +6,6 @@
 <%# <%= link_to 'Add Item', new_list_item_path(@list) %>
 <br />
 
-<%= link_to 'Edit List Title' edit_user_lists_path([@users, @list])%>
+<%= link_to 'Edit List Title', edit_user_list_path([@user, @list]) %>
 <%= link_to 'Delete List', [@user, @list], method: :delete %>
 <%= link_to 'Back to Lists', user_lists_path(@user) %>
