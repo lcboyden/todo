@@ -1,11 +1,20 @@
 <h1>Hello <%= @user.first_name %>, </h1>
 
-<h4>List: <%= @list.title %></h4>
-
-<br />
-<%# <%= link_to 'Add Item', new_list_item_path(@list) %>
-<br />
-
 <%= link_to 'Edit List Title', edit_user_list_path([@user, @list]) %>
+<h2><%= @list.title %></h2>
+
+<%= link_to 'Add Item', new_list_item_path(@list) %>
+<ul>
+<% @list.items.each do |i| %>
+    <%= i.body %>
+    <br />
+    <%= link_to 'Edit', edit_list_item_path(i)%>
+    <%= link_to 'Delete', new_list_item_path(i), method: :delete %>
+    <br />
+    <br />
+  <% end %>
+</ul>
+
+
 <%= link_to 'Delete List', [@user, @list], method: :delete %>
 <%= link_to 'Back to Lists', user_lists_path(@user) %>
