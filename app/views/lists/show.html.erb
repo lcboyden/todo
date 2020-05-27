@@ -1,6 +1,6 @@
 <h1>Hello <%= @user.first_name %>, </h1>
 
-<%= link_to 'Edit List Title', edit_user_list_path([@user, @list]) %>
+<%= link_to 'Edit List Title', edit_user_list_path(@user, @list) %>
 <h2><%= @list.title %></h2>
 
 <%= link_to 'Add Item', new_list_item_path(@list) %>
@@ -8,8 +8,8 @@
 <% @list.items.each do |i| %>
     <%= i.body %>
     <br />
-    <%= link_to 'Edit', edit_list_item_path(i)%>
-    <%= link_to 'Delete', new_list_item_path(i), method: :delete %>
+    <%= link_to 'Edit', edit_list_item_path(@list.id, i.id)%>
+    <%= link_to 'Delete', list_item_path(@list.id, i.id), method: :delete %>
     <br />
     <br />
   <% end %>

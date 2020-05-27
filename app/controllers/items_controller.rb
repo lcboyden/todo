@@ -6,14 +6,19 @@ class ItemsController < ApplicationController
     @items = @list.items
   end
 
+  def show
+  end
+
   def new
-    @item = Item.new
+    @item = @list.items.new
   end
 
   def create
     @item = @list.items.new(item_params)
+    
     if @item.save 
-      redirect_to user_list_path(@list.user_id, @list)
+      redirect_to user_list_path(@list.user_id, @list) 
+      # 
     else
       render :new
     end
@@ -23,8 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = @list.items.update(item_params)
-    if @item.save 
+    if @item.update(item_params)
       redirect_to user_list_path(@list.user_id, @list)
     else
       render :edit
@@ -33,21 +37,22 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to user_lists_path
+    # binding.pry
+    redirect_to user_list_path(@list.user_id, @list.id)
   end
 
   private 
 
-  def set_list
-    @list = List.find(params[:id])
-  end
+    def set_list
+      @list = List.find(params[:list_id])
+    end
 
-  def set_item
-    @item = Item.find(params[:list_id])
-  end
+    def set_item
+      @item = Item.find(params[:id])
+    end
 
-  def item_params
-    params.require(:item).permit(:body)
-  end
+    def item_params
+      params.require(:item).permit(:body)
+    end
 
 end
