@@ -1,10 +1,12 @@
 <h1> <%= @item.id ? 'Edit Item' : 'Create Item' %> </h1>
 <hr />
-<%= form_with(model: [@list, @item], local: true) do |f| %>
-  <%= f.label :item %>
-  <br />
-  <%= f.text_field :body %>
-  <br />
-  <br />
-  <%= f.submit%>
+<%= form_with(model: [@list, @item], local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :item %>
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.submit%>
+  </div>
 <% end %>

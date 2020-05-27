@@ -1,14 +1,15 @@
-<%= form_with(model: user, local:true) do |f|%>
-  <%= f.label :first_name %>
-  <br />
-  <%= f.text_field :first_name %>
-  <br />
+<%= form_with(model: user, local:true, class: "ui form") do |f|%>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
   
-  <%= f.label :last_name %>
-  <br />
-  <%= f.text_field :last_name %>
-  <br />
-  <br />
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
 
-  <% end %>
+   <div class="field">
+    <%= f.submit %>
+  </div>
+<% end %>

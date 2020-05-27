@@ -1,12 +1,22 @@
-<h1>All Users</h1>
+<h1 class="ui header">All Users</h1>
+  <table class="ui striped table">
+    <thead>
+      <tr class="center aligned">
+        <th colspan="4"></th>
+      </tr>
+    </thead> 
+
 <%= link_to "New User", new_user_path %>
+  <tbody>
+    <% @users.each do |user|%>
+      <tr class="left aligned">
+        <td><h1><%= user.name %></h1></td>
 
-<% @users.each do |user|%>
+        <td><%= link_to "View Lists", user_lists_path(user) %></td>
+        <td><%= link_to "Edit", edit_user_path(user) %></td>
+        <td><%= link_to "Delete", user_path(user), method: :delete %></td>
+      </tr>
+    <% end %>
 
-<h1><%= user.name %></h1>
-
-  <%= link_to "View Lists", user_lists_path(user) %>
-  <%= link_to "Edit", edit_user_path(user) %>
-  <%= link_to "Delete", user_path(user), method: :delete %>
-<% end %>
-<br />
+    </tbody>
+</table>
